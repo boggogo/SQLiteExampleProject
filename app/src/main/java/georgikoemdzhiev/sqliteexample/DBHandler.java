@@ -31,7 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_SHOPS + "("
-                + KEY_ID + "INTEGER PRIMARY KEY,"
+                + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NAME + " TEXT, "
                 + KEY_SH_ADDR + " TEXT" + ")";
         sqLiteDatabase.execSQL(CREATE_CONTACTS_TABLE);
@@ -49,6 +49,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_ID,shop.getId());
         contentValues.put(KEY_NAME,shop.getName());
         contentValues.put(KEY_SH_ADDR,shop.getAddress());
 
@@ -103,6 +104,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public int updateShop(Shop shop) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(KEY_ID,shop.getId());
         values.put(KEY_NAME, shop.getName());
         values.put(KEY_SH_ADDR, shop.getAddress());
 // updating row
@@ -113,8 +115,8 @@ public class DBHandler extends SQLiteOpenHelper {
     // Deleting a shop
     public void deleteShop(Shop shop) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_SHOPS, KEY_ID + " = ?",
-                new String[] { String.valueOf(shop.getId()) });
+        //TABLE_SHOPS, KEY_ID + " = ?", new String[] { String.valueOf(shop.getId()) }
+        db.delete(TABLE_SHOPS,KEY_ID + " = ?",new String[]{String.valueOf(shop.getId())});
         db.close();
     }
 }

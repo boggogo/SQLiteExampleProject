@@ -18,10 +18,13 @@ public class MainActivity extends AppCompatActivity {
         DBHandler db = new DBHandler(this);
 
 // Inserting Shop/Rows
-        Log.d("Insert: ", "Inserting ..");
-        db.addShop(new Shop(0,"Mu Shop","Union Street"));
-        db.addShop(new Shop(1,"Mu Shop2","Union Street2"));
-        db.addShop(new Shop(2,"Mu Shop3","Union Street3"));
+//        Log.d("Insert: ", "Inserting ..");
+//        db.addShop(new Shop(0,"My Shop","Union Street"));
+//        db.addShop(new Shop(1,"Mamut","Budapest Street"));
+//        db.addShop(new Shop(2,"Fox","Fox Street"));
+
+//        db.deleteShop(new Shop(2,"",""));
+        db.updateShop(new Shop(0,"THE BEST STORE EVER","Best Street 101"));
 
 // Reading all shops
         Log.d("Reading: ", "Reading all shops..");
@@ -32,5 +35,6 @@ public class MainActivity extends AppCompatActivity {
 // Writing shops to log
             Log.d("Shop: : ", log);
         }
+
     }
 }
